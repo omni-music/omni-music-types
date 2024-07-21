@@ -1,19 +1,21 @@
 import "typescript"
 
 export type OmniType = "track" | "list" | "author"
-export type OmniID = String
-export type OmniURL = String
-export type ServiceCode = String
+export type OmniID = string
+export type OmniURL = string
+export type ServiceCode = string
 
 //---------------------------------------
 
 export interface OmniService {
-  check(input: String): OmniType | null,
+  name: string
+  code: ServiceCode,
+  check(input: string): OmniType | null,
   get(id: OmniID, type: OmniType): OmniTrack | OmniList | OmniAuthor | null,
   track(input: OmniID | OmniURL): OmniTrack | null,
   list(input: OmniID | OmniURL): OmniList | null,
   author(input: OmniID | OmniURL): OmniAuthor | null,
-  search(query: String, type: OmniType, limit: Number): OmniTrack[] | OmniList[] | OmniAuthor[]
+  search(query: string, type: OmniType, limit: Number): OmniTrack[] | OmniList[] | OmniAuthor[]
 }
 
 
@@ -21,9 +23,9 @@ export interface OmniService {
 
 export interface OmniTrack {
   type: "track",
-  title: String,
+  title: string,
   author: StaticOmniAuthor,
-  desc: String,
+  desc: string,
   image: OmniURL,
   url: OmniURL,
   omni_id: OmniID,
@@ -32,8 +34,8 @@ export interface OmniTrack {
 
 export interface OmniList {
   type: "list",
-  title: String,
-  desc: String,
+  title: string,
+  desc: string,
   url: OmniURL,
   omni_id: OmniID,
   tracks: OmniID[] | StaticOmniTrack[],
@@ -42,8 +44,8 @@ export interface OmniList {
 
 export interface OmniAuthor {
   type: "author",
-  name: String,
-  bio: String,
+  name: string,
+  bio: string,
   url: OmniURL,
   omni_id: OmniID,
   tracks: OmniID[] | StaticOmniTrack[],
@@ -54,20 +56,20 @@ export interface OmniAuthor {
 //---------------------------------------
 
 export interface StaticOmniTrack {
-  title: String,
+  title: string,
   author: StaticOmniAuthor,
   omni_id: OmniID,
   service: ServiceInfo
 }
 
 export interface StaticOmniAuthor {
-  name: String,
+  name: string,
   url: OmniURL,
   omni_id: OmniID
 }
 
 export interface ServiceInfo {
-  id: String,
+  id: string,
   code: ServiceCode,
-  name: String
+  name: string
 }
