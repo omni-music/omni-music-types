@@ -40,7 +40,7 @@ export interface OmniList {
   image: OmniURL | null,
   url: OmniURL,
   omni_id: OmniID,
-  tracks: OmniID[] | StaticOmniTrack[],
+  tracks: OmniTrack[],
   service: ServiceInfo,
   likes: number | null
 }
@@ -52,7 +52,7 @@ export interface OmniAuthor {
   image: OmniURL | null,
   url: OmniURL,
   omni_id: OmniID,
-  tracks: OmniID[] | StaticOmniTrack[],
+  tracks: OmniTrack[],
   service: ServiceInfo,
   followers: number | null
 }
