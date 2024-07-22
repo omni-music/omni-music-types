@@ -25,31 +25,36 @@ export interface OmniTrack {
   type: "track",
   title: string,
   author: StaticOmniAuthor,
-  desc: string,
-  image: OmniURL,
+  desc: string | null,
+  image: OmniURL | null,
   url: OmniURL,
   omni_id: OmniID,
-  service: ServiceInfo
+  service: ServiceInfo,
+  likes: number | null
 }
 
 export interface OmniList {
   type: "list",
   title: string,
-  desc: string,
+  desc: string | null,
+  image: OmniURL | null,
   url: OmniURL,
   omni_id: OmniID,
   tracks: OmniID[] | StaticOmniTrack[],
-  service: ServiceInfo
+  service: ServiceInfo,
+  likes: number | null
 }
 
 export interface OmniAuthor {
   type: "author",
   name: string,
   bio: string,
+  image: OmniURL | null,
   url: OmniURL,
   omni_id: OmniID,
   tracks: OmniID[] | StaticOmniTrack[],
-  service: ServiceInfo
+  service: ServiceInfo,
+  followers: number | null
 }
 
 
